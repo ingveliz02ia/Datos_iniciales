@@ -7,7 +7,7 @@ app = Flask(__name__)
 latest_data = None
 @app.route('/')
 def form():
-    return("Hola mundo")
+    return("Informacion de Datos Temporales")
 # Endpoint para recibir datos
 @app.route('/receive-data', methods=['POST'])
 def receive_data():
