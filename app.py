@@ -7,7 +7,7 @@ app = Flask(__name__)
 latest_data = None
 @app.route('/')
 def form():
-    return("Hola mundo")
+    return("Informacion de Datos Temporales")
 # Endpoint para recibir datos
 @app.route('/receive-data', methods=['POST'])
 def receive_data():
@@ -15,12 +15,13 @@ def receive_data():
     # Obtén el JSON enviado en la solicitud
     data = request.get_json()
     
-    if not data or "name" not in data or "email" not in data or 'phone_number' not in data:
-        return jsonify({"error": "Invalid JSON format. 'name' and 'email' are required."}), 400
+    if not data or "first_name" not in data or "last_name" not in data or "email" not in data or 'phone_number' not in data:
+        return jsonify({"error": "Invalid JSON format. 'first_name' and 'email' are required."}), 400
 
     # Almacena solo el nombre completo y correo electrónico
     latest_data = {
-        "name": data["name"],
+        "first_name": data["first_name"],
+        "last_name": data["last_name"],
         "email": data["email"],
         "phone_number":data["phone_number"]
     }
