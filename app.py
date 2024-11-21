@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from waitress import serve
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG) #para mostrar mensajes en ralway pero no funciono
 
 # Variable para almacenar temporalmente el último nombre completo y correo electrónico recibido
 latest_data = None
@@ -28,7 +28,7 @@ def receive_data():
         "phone_number":data["phone_number"]
     }
     print("Datos actualizados:", latest_data)
-    app.logger.info("Datos actualizados:", latest_data)
+    app.logger.info(f"Datos actualizados: {latest_data}")
     return jsonify({"status": "Data received", "data": latest_data}), 200
 
 # Endpoint para obtener el último dato
